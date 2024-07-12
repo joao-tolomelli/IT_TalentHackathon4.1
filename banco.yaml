@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: database
+  labels:
+    app: banco_it_talent
+    tier: database
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      tier: database
+  template:
+    metadata:
+      labels:
+        tier: database
+    spec:
+      containers:
+      - name: banco-it-talent
+        image: joaotolomelli/banco:public
+        ports:
+        - containerPort: 3306

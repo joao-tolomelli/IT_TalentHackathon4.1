@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: backend
+  labels:
+    app: backend_it_talent
+    tier: backend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      tier: backend
+  template:
+    metadata:
+      labels:
+        tier: backend
+    spec:
+      containers:
+      - name: backend-it-talent
+        image: joaotolomelli/backend:public
+        ports:
+        - containerPort: 8080
